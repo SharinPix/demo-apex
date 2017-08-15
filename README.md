@@ -1,8 +1,7 @@
 
-# [Flow](https://github.com/sharinpix/demo-apex/tree/flow)
+# Image resize using SharinPix Utils class
 
-[<img src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">](https://githubsfdeploy.herokuapp.com?owner=sharinpix&repo=demo-apex&ref=flow)
+Open your Setup and find the Visualforce page named 'SharinPixResizeDemo'. Preview the Visualforce page. Once on the page, you must click on an image so that the resize options will be available. Set a new height and width and click on the 'Resize' button.
 
-# Work Order token
+[<img src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">](https://githubsfdeploy.herokuapp.com?owner=sharinpix&repo=demo-apex&ref=image-resize)
 
-[<img src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">](https://githubsfdeploy.herokuapp.com?owner=sharinpix&repo=demo-apex&ref=work_order_token)
