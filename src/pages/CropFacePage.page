@@ -1,0 +1,83 @@
+<apex:page standardController="Account" extensions="CropFaceController">
+<apex:slds/>
+    <script>
+    var latestImageViewed;
+    var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+    var eventer = window[eventMethod];
+    var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+    eventer(messageEvent, function(e) {
+        if (e.origin === 'https://app.sharinpix.com') {
+            var data = e.data;
+            switch (data.name) {
+                case 'viewer-image-viewed':
+                    latestImageViewed = data.payload.image;
+                    break;
+                case 'viewer-closed':
+                    latestImageViewed = null;
+            }
+        }
+    }, false);
+    function cropFace(){
+        var height = document.getElementById("heightInput").value;
+        var width = document.getElementById("widthInput").value;
+        var crop = document.getElementById("cropInput").value;
+        var gravity = document.getElementById("gravityInput").value;
+        var radius = document.getElementById("radiusInput").value;
+        var options = JSON.stringify({'crop': crop, 'gravity': gravity, 'radius': radius});
+        Visualforce.remoting.Manager.invokeAction(
+            '{!$RemoteAction.CropFaceController.cropFace}',
+            latestImageViewed.public_id,
+            width,
+            height,
+            options,
+            function(result, event){
+                if (event.status) {
+                    window.open(result, '_blank');  
+                } else if (event.type === 'exception') {
+                    alert(event.message);
+                } else {
+                    alert(event.message);
+                }
+            }
+        );
+    }
+    </script>
+    <div class="slds-scope">
+        <div class="slds-form slds-form_stacked">
+            <div class="slds-form-element">
+                <label class="slds-form-element__label" for="heightInput">Height</label>
+                <div class="slds-form-element__control">
+                    <input type="number" id="heightInput" class="slds-input" placeholder="200"/>
+                </div>
+            </div>
+            <div class="slds-form-element">
+                <label class="slds-form-element__label" for="widthInput">Width</label>
+                <div class="slds-form-element__control">
+                    <input type="number" id="widthInput" class="slds-input" placeholder="200"/>
+                </div>
+            </div>
+            <div class="slds-form-element">
+                <label class="slds-form-element__label" for="cropInput">Crop</label>
+                <div class="slds-form-element__control">
+                    <input type="text" id="cropInput" class="slds-input" placeholder="crop"/>
+                </div>
+            </div>
+            <div class="slds-form-element">
+                <label class="slds-form-element__label" for="gravityInput">Gravity</label>
+                <div class="slds-form-element__control">
+                    <input type="text" id="gravityInput" class="slds-input" placeholder="face"/>
+                </div>
+            </div>
+            <div class="slds-form-element">
+                <label class="slds-form-element__label" for="radiusInput">Radius</label>
+                <div class="slds-form-element__control">
+                    <input type="text" id="radiusInput" class="slds-input" placeholder="max"/>
+                </div>
+            </div>
+            <div class="slds-form-element">
+                <button class="slds-button slds-button_brand" onclick="cropFace()">Crop Face</button>
+            </div>
+        </div>
+    </div>
+    <apex:canvasApp developerName="Albums" height="500px" parameters="{!parameters}" width="100%"/>
+</apex:page>
