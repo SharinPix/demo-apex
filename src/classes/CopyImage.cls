@@ -10,8 +10,7 @@ public class CopyImage {
      */
     public static void copy(String sourceAlbumId, String destinationAlbumId, List<String> imageList) {
         Blob cryptoBlob = Crypto.GenerateAESKey(128);
-        //clipboardId must be in a random format e.g: d2a57c0f-d52d-4216-611d-15a5cad17449
-        String clipboardId = EncodingUtil.convertToHex(cryptoBlob);
+        String clipboardId = EncodingUtil.convertToHex(cryptoBlob); //must in uuid format
         String endpointCopy = '/clipboards';
         String endpointPaste = '/clipboards/'+clipboardId+'/paste';
 
@@ -23,7 +22,7 @@ public class CopyImage {
                 sourceAlbumId => new Map<String, Object> {
                     'Access' => new Map<String, Boolean> {
                         'see' => true,
-                        'image_list' => true,
+                        'image_list' => true,`
                         'image_copy' => true
                     }
                 }
