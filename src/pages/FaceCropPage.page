@@ -1,0 +1,19 @@
+<apex:page standardController="Account" extensions="FaceCrop">
+<script>
+    var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+    var eventer = window[eventMethod];
+    var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+    eventer(messageEvent,function(e) {
+        if (e.origin !== "https://app.sharinpix.com") return;
+        if (e.data.payload.tag_image == undefined) return;
+        if (e.data.payload.tag_image.tag.name !== "profile-picture") return;
+        Visualforce.remoting.Manager.invokeAction(
+            '{! $RemoteAction.FaceCrop.getFaceCrop }',
+            e.data.payload.tag_image.image.public_id,
+            e.data.payload.tag_image.image.album_id,
+            function(res) {}
+        );
+    }, false);
+  </script>
+  <apex:canvasApp developerName="Albums" height="500px" parameters="{! parameters }" width="100%"/>
+</apex:page>
