@@ -10,8 +10,8 @@ public class CopyImage {
      */
     public static void copy(String sourceAlbumId, String destinationAlbumId, List<String> imageList) {
         Blob cryptoBlob = Crypto.GenerateAESKey(128);
-        String cryptoHex = EncodingUtil.convertToHex(cryptoBlob);
-        String clipboardId = cryptoHex.substring(0,8)+ '-' + cryptoHex.substring(8,12) + '-' + cryptoHex.substring(12,16) + '-' + cryptoHex.substring(16,20) + '-' + cryptoHex.substring(20);
+        //clipboardId must be in a random format e.g: d2a57c0f-d52d-4216-611d-15a5cad17449
+        String clipboardId = EncodingUtil.convertToHex(cryptoBlob);
         String endpointCopy = '/clipboards';
         String endpointPaste = '/clipboards/'+clipboardId+'/paste';
 
