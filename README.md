@@ -25,7 +25,16 @@ params = new Map<String, String> {
 ```
 and, images' record URLs will lead to, for e.g., https://custom-domain.my.salesforce.com/0Mf0Y000000PBXfAAO
 
-Insert the values for these parameters within the following line of code found in the Apex controller:
+### Enable download and zipping
+It is possible to download the search image results into a zipped folder through the use of the following parameters.
+- `download`  - (true or false ) enable or disable the download feature.
+- `download_filename` - specify the name of the downloaded image file (only 1 image)
+- `download_filenames` - specify the name format of the downloaded image files (multiple images)
+
+- `query.put('download', true);`
+- `query.put('download_filename', 'my_zip_filename');`
+- `query.put('download_filenames', 'inside_the_zip-00001');`
+
 ```
 params = new Map<String, String> { 'path' => '/search?search_bar=false&q=' + clientInstance.token(query) };
 ```
