@@ -1,0 +1,21 @@
+<apex:page standardController="Contact" extensions="CustomFooterCtrl">
+    <script>
+        var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+        var eventer = window[eventMethod];
+        var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+        eventer(messageEvent,function(e) {
+            if (e.origin !== "https://app.sharinpix.com") return;
+
+            if(e.data.name == "viewer-image-viewed"){
+                document.getElementById('download-link').href = e.data.payload.image.original_url;
+                document.getElementById('download-link').text = 'Download Image';
+            }else if (e.data.name == "viewer-closed") {
+                document.getElementById("download-link").text = '';
+            }
+        }, false);
+    </script>
+    <apex:canvasApp developerName="Albums" height="500px" parameters="{! parameters }" width="100%"/>
+    <p id="container">
+    	<a id="download-link" href=""></a>
+    </p>
+</apex:page>
