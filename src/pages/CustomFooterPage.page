@@ -7,7 +7,7 @@
             if (e.origin !== "https://app.sharinpix.com") return;
 
             if(e.data.name == "viewer-image-viewed"){
-                document.getElementById('download-link').href = e.data.payload.image.original_url;
+                document.getElementById('download-link').href = e.data.payload.image.thumbnails.full;
                 document.getElementById('download-link').text = 'Download Image';
             }else if (e.data.name == "viewer-closed") {
                 document.getElementById("download-link").text = '';
