@@ -26,4 +26,5 @@ Find below the links to SharinPix demos and their corresponding descriptions:
 *  [Upload to SharinPix using URL with tags](https://github.com/SharinPix/demo-apex/tree/upload_with_tags/) - Upload an image along with its tags with the use of a URL.
 * [Webhook Site](https://github.com/SharinPix/demo-apex/tree/webhook) - Handle webhooks from SharinPix for several events.
 * [Manage delete permission with Tag](https://github.com/SharinPix/demo-apex/tree/api-tag-delete) - Grant the possibility to delete an image with the use of a tag.
+* [Custom Footer Download](https://github.com/SharinPix/demo-apex/tree/custom-footer-download) - Create a custom footer button that will enable the download of eac image which is being currently viewed.
 ***
