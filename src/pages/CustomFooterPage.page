@@ -7,7 +7,9 @@
             if (e.origin !== "https://app.sharinpix.com") return;
 
             if(e.data.name == "viewer-image-viewed"){
+                console.log('e.data: ', e.data.payload.image);
                 document.getElementById('download-link').href = e.data.payload.image.original_url;
+                document.getElementById('download-link-annotation').href = e.data.payload.image.thumbnails.full;
                 document.getElementById('download-link').text = 'Download Image';
             }else if (e.data.name == "viewer-closed") {
                 document.getElementById("download-link").text = '';
@@ -17,5 +19,6 @@
     <apex:canvasApp developerName="Albums" height="500px" parameters="{! parameters }" width="100%"/>
     <p id="container">
     	<a id="download-link" href=""></a>
+        <a id="download-link-annotation" href=""></a>
     </p>
 </apex:page>
