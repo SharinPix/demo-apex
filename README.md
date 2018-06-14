@@ -1,4 +1,4 @@
-## Custom Footer Download
+## Custom Annotation Download
 
 ***
 The present sample code illustrates a way to download an image along with its corresponding annotations.
