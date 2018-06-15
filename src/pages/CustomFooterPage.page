@@ -6,16 +6,26 @@
         eventer(messageEvent,function(e) {
             if (e.origin !== "https://app.sharinpix.com") return;
 
-            if(e.data.name == "viewer-image-viewed"){
-                document.getElementById('download-link').href = e.data.payload.image.thumbnails.full;
-                document.getElementById('download-link').text = 'Download Image';
+            if(e.data.name == "viewer-image-viewed"){                
+                document.getElementById('download-link-full').href = e.data.payload.image.external_urls.full;                
+                document.getElementById('download-link-full').text = 'Download full Image';
+                
+                document.getElementById('download-link-large').href = e.data.payload.image.external_urls.large;                
+                document.getElementById('download-link-large').text = 'Download large Image';
+                
+                document.getElementById('download-link-mini').href = e.data.payload.image.external_urls.mini;                
+                document.getElementById('download-link-mini').text = 'Download mini Image';
             }else if (e.data.name == "viewer-closed") {
-                document.getElementById("download-link").text = '';
+                document.getElementById("download-link-full").text = '';
+                document.getElementById("download-link-large").text = '';
+                document.getElementById("download-link-mini").text = '';
             }
         }, false);
     </script>
     <apex:canvasApp developerName="Albums" height="500px" parameters="{! parameters }" width="100%"/>
     <p id="container">
-    	<a id="download-link" href=""></a>
+        <a  id="download-link-full" href=""    download="" ></a><br/>
+        <a  id="download-link-large" href=""   download="" ></a><br/>
+        <a  id="download-link-mini" href=""    download="" ></a>
     </p>
 </apex:page>
