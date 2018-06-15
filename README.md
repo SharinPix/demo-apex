@@ -10,6 +10,6 @@ The present sample code illustrates a way to download a specific image in differ
 | mini | 100 x 100 |
 
 
-[<img src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">](https://githubsfdeploy.herokuapp.com?owner=sharinpix&repo=demo-apex&ref=custom-annotation-download)
+[<img src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">](https://githubsfdeploy.herokuapp.com?owner=sharinpix&repo=demo-apex&ref=personalized-size-download)
 
 ***
