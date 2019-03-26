@@ -5,7 +5,6 @@ public class SharinPixDemoAccountContactsSearchCtrl {
     public SharinPixDemoAccountContactsSearchCtrl(ApexPages.StandardController stdCtrl) {
         Id accountId = stdCtrl.getId();
         List<Contact> contacts = [SELECT Id FROM Contact WHERE AccountId = :accountId];
-        Map<String, Object> query = new Map<String, Object>();
         String queryStr = '';
         for (Contact contact : contacts) {
             queryStr += '"' + contact.Id + '" ';
