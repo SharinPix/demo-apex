@@ -1,0 +1,35 @@
+<apex:page controller="SharinPixSearchUntag" showHeader="false" sidebar="false">
+    <script>
+        var imagesSelected = [];
+        window.addEventListener('message', function(event) {
+            if(event['data'] != 'undefined' && event['origin'] == 'https://app.sharinpix.com') {
+                if(event['data']['name'] == 'images-selected') {
+                    imagesSelected = event['data']['payload']['images'];
+                }
+            }
+        });
+
+        function unTagImages() {
+            if(imagesSelected.length > 0 ) {
+                console.log('images: ', imagesSelected);
+                Visualforce.remoting.Manager.invokeAction(
+                    '{!$RemoteAction.SharinPixSearchUntag.untagImages}',
+                    JSON.stringify(imagesSelected),
+                    function(result, event) {
+                        if(event.status) {
+                            console.log('Tag(s) removed.');
+                        }
+                        else {
+                            console.log('Error: Request failed.');
+                        }
+                    }
+                );
+            }
+            else {
+                alert('Select an image first !');
+            }
+        }
+    </script>
+    <apex:canvasApp developerName="Albums" width="100%" height="500px" parameters="{! parameters }"/>
+    <button onclick="unTagImages()">Untag selected images</button>
+</apex:page>
