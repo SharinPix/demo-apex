@@ -39,9 +39,9 @@ private class DuplicateImagesDemoCtrlTest {
         String expectedResponse = '[{"public_id": "1"}, {"public_id":  "2"}]';
 
         Map<String, HttpCalloutMock> requestResponses = new Map<String, HttpCalloutMock> {
-            'https://api.sharinpix.com/api/v1/images/duplicate_bulk' => new SingleRequestMock(200, 'OK', expectedResponse, null)
+            'https://api.sharinpix.com/api/v1/images/duplicate_bulk' => new sharinpix.SingleRequestMock(200, 'OK', expectedResponse, null)
         };
-        Test.setMock(HttpCalloutMock.class, new MultiRequestMock(requestResponses));
+        Test.setMock(HttpCalloutMock.class, new sharinpix.MultiRequestMock(requestResponses));
 
         Test.startTest();
         Integer actualImageCount = DuplicateImagesDemoCtrl.duplicate(params);

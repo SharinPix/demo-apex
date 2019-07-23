@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ApexClass xmlns="urn:metadata.tooling.soap.sforce.com" fqn="DuplicateImagesDemoCtrlTest">
-    <apiVersion>45.0</apiVersion>
+    <apiVersion>40.0</apiVersion>
     <status>Active</status>
 </ApexClass>
 
