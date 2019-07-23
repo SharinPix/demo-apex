@@ -17,5 +17,4 @@
 
 ![](https://raw.githubusercontent.com/kherinwork/images/master/6.png)
 
-
 [<img src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">](https://githubsfdeploy.herokuapp.com?owner=sharinpix&repo=demo-apex&ref=duplicate-images-in-bulk)
