@@ -1,0 +1,68 @@
+<apex:page standardController="Account" extensions="DuplicateImagesDemoCtrl" showHeader="false" sidebar="false">
+        <apex:slds />
+        <script>
+            var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+            var eventer = window[eventMethod];
+            var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+            var isBtnVisible = false;
+            var destinationAlbumId = '';
+            var images = [];
+
+            function duplicate() {
+                Visualforce.remoting.Manager.invokeAction(
+                    '{!$RemoteAction.DuplicateImagesDemoCtrl.duplicate}',
+                    JSON.stringify({
+                        'destinationAlbumId' : destinationAlbumId,
+                        'images' : images
+                    }),
+                    function(response) {
+                        if(response) {
+                            toggleButton(false);
+                        }
+                    }
+                );
+                toggleButton(true);
+            }
+
+            function toggleButton(disable) {
+                var buttonEl = document.querySelector('#duplicateBtn');
+                buttonEl.disabled = disable;
+                var buttonText = disable ? 'Duplicating...' : 'Duplicate';
+                buttonEl.textContent = buttonText;
+            }
+
+            eventer(messageEvent, function(e) {
+                if (e.origin !== "https://app.sharinpix.com") return;
+                if(e.data.name == 'images-selected') {
+                    if(e.data.payload.images.length) {
+                        destinationAlbumId = document.querySelector('#albumIdInput').value;
+                        for(let index = 0; index < e.data.payload.images.length; index++) {
+                            images.push(e.data.payload.images[index].public_id);
+                        }
+                    }
+                }
+            });
+        </script>
+        <div class="slds-scope">
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col">
+                    <div class="slds-form-element slds-p-bottom_small">
+                        <div class="slds-grid slds-form-element__control">
+                            <div class="slds-col slds-size_1-of-2">
+                                <label class="slds-form-element__label" for="albumIdInput">Enter:</label>
+                                <input id="albumIdInput" class="slds-input" type="text" placeholder="Destination Album" />
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <div class="slds-p-top_large">
+                                    <button id="duplicateBtn" class="slds-button slds-button_neutral" onClick="duplicate()">Duplicate</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-p-top_small">
+                        <iframe width="100%" height="500px" style="border: 0;" src="{! searchUrl }"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+</apex:page>
