@@ -34,7 +34,7 @@ global with sharing class DuplicateImagesDemoCtrl {
             images.add((String) imageObj );
         }
 
-        List<Object> duplicatedImages = utl.duplicateImages(destinationAlbumId, images);
+        List<Object> duplicatedImages = utl.duplicateImages(images, destinationAlbumId);
         return duplicatedImages.size();
     }
 }
