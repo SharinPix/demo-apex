@@ -4,6 +4,7 @@ public with sharing class CustomFooterCtrl {
     public CustomFooterCtrl (ApexPages.StandardController stdCtrl) {
         Id albumId = stdCtrl.getId();
         Map<String, Object> params = new Map<String, Object> {
+            'Id' => albumId,
             'abilities' => new Map<String, Object> {
                 albumId => new Map<String, Object> {
                     'Access' => new Map<String, Object> {
