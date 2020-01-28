@@ -17,5 +17,5 @@
         }
     }, false);
   </script>
-  <apex:canvasApp developerName="Albums" height="500px" parameters="{! parameters }" width="100%"/>
+  <SharinPix:SharinPix height="500px" parameters="{! parameters }"/>
 </apex:page>
