@@ -4,6 +4,7 @@ global with sharing class SharinPixDemoActionEmailCtrl {
     global SharinPixDemoActionEmailCtrl(ApexPages.StandardController stdCtrl) {
         Id contactId = stdCtrl.getId();
         Map<String, Object> params = new Map<String, Object> {
+            'Id' => contactId,
             'abilities' => new Map<String, Object> {
                 contactId => new Map<String, Object> {
                     'Access' => new Map<String, Object> {
