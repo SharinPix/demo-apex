@@ -22,7 +22,7 @@
             }
         }, false);
     </script>
-    <apex:canvasApp developerName="Albums" height="500px" parameters="{! parameters }" width="100%"/>
+    <SharinPix:SharinPix height="500px" parameters="{! parameters }"/>
     <p id="container">
         <a  id="download-link-full" href=""    download="" ></a><br/>
         <a  id="download-link-large" href=""   download="" ></a><br/>
