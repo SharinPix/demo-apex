@@ -27,8 +27,8 @@ private class SharinPixDemoAccountContactsSearchTest
 			'path' => '/search?search_bar=false',
 			'q' => queryString,
 			'download' => true,
-            'download_filename' => 'my_zip_filename',
-            'download_filenames' => 'inside_the_zip-00001'
+			'download_filename' => 'my_zip_filename',
+			'download_filenames' => 'inside_the_zip-00001'
 		};
 
 		String expectedParameters = JSON.serialize(expectedParams);
