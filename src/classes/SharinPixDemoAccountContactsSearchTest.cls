@@ -25,7 +25,7 @@ private class SharinPixDemoAccountContactsSearchTest
         
 		Map<String, Object> expectedParams = new Map<String, Object> {
 			'path' => '/search?search_bar=false',
-            'q' => queryString,
+			'q' => queryString,
 			'download' => true,
             'download_filename' => 'my_zip_filename',
             'download_filenames' => 'inside_the_zip-00001'
