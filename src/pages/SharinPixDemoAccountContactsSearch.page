@@ -1,7 +1,12 @@
 <apex:page standardController="Account" extensions="SharinPixDemoAccountContactsSearchCtrl"
            showHeader="false" sidebar="false">
     <!-- Use either -->
-    <apex:canvasApp developerName="Albums" width="100%" height="500px" parameters="{! parameters }"/>
+    <apex:canvasApp developerName="Albums" width="100%" height="250px" parameters="{! parameters }"/>
     <!-- or -->
-    <iframe width="100%" height="500px" style="border: 0;" src="{! searchUrl }"/>
+    <iframe id="iframeId" width="100%" height="250px" style="border: 0;" src="https://app.sharinpix.com/post_message"/>
+    <script>
+        document.getElementById('iframeId').onload = function() {
+            this.contentWindow.postMessage({ token: "{! searchUrl }" }, 'https://app.sharinpix.com');
+        }
+    </script>
 </apex:page>
