@@ -27,6 +27,5 @@ Find below the links to SharinPix demos and their corresponding descriptions:
 * [Webhook Site](https://github.com/SharinPix/demo-apex/tree/webhook) - Handle webhooks from SharinPix for several events.
 * [Manage delete permission with Tag](https://github.com/SharinPix/demo-apex/tree/api-tag-delete) - Grant the possibility to delete an image with the use of a tag.
 * [Custom Footer Download](https://github.com/SharinPix/demo-apex/tree/custom-footer-download) - Create a custom footer that will enable the download of each image which is being currently viewed.
-* [Duplicate Multiple Images to another album](https://github.com/SharinPix/demo-apex/tree/duplicate-images-in-bulk) - Duplicate multiple images to a specified SharinPix Album.
-* [List of Cases with album](https://github.com/SharinPix/demo-apex/tree/list_case_album) - Display list of Cases with corresponding SharinPix Album.
+* [Duplicate Multiple Images to another album](https://github.com/SharinPix/demo-apex/tree/duplicate-images-in-bulk) - Duplicate multiple images to a specified SharinPix Album
 ***
