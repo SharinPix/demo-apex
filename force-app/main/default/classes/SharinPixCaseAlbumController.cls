@@ -1,7 +1,7 @@
 public class SharinPixCaseAlbumController {
-	@AuraEnabled
+    @AuraEnabled
     public static List<Case> getCaseRecords() {
-		return [SELECT Id, CaseNumber FROM Case];           
+        return [SELECT Id, CaseNumber FROM Case];
     }
     
     @AuraEnabled
@@ -19,17 +19,17 @@ public class SharinPixCaseAlbumController {
                        	'fullscreen' => true,
                         'image_tag' => true
                     },
-					'Display' => new Map<String, Object> {
-                    	'tags' => true		        
+                    'Display' => new Map<String, Object> {
+                        'tags' => true
                     }
                 },
-                    'tags'=> new Map<String, Object> {
-                        'create' => true,
-    					'read'=> true,
-    					'filter_any_of'=> true
-  					}
+                'tags'=> new Map<String, Object> {
+                    'create' => true,
+                    'read'=> true,
+                    'filter_any_of'=> true
+  				}
             },
-			'download' => true,
+            'download' => true,
             'Id' => albumId,
             'path' => '/pagelayout/' + albumId
         };
